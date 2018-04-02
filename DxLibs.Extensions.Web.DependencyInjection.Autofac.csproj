@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp2.0;net461</TargetFrameworks>
+    <Timestamp>$([System.DateTime]::Now.ToString("yyyyMMdd-HHmm"))</Timestamp>
+    <Version>0.0.1-beta$(Timestamp)</Version>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Company>Dx Libs</Company>
+    <Authors>Dx Team</Authors>
+    <Product>DI extensions</Product>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
+    <DefineConstants>NETCORE</DefineConstants>
+    <BuildFor>NETCORE</BuildFor>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net461' ">
+    <DefineConstants>FW</DefineConstants>
+    <BuildFor>FW</BuildFor>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(BuildFor)' == 'NETCORE' ">
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(BuildFor)' == 'FW' ">
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.2" />
+  </ItemGroup>
+
+</Project>
